@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Formularz</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Formularz.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background: #121212;
+            color: #ffffff;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Gradientowa nawigacja */
+        header nav {
+            background: linear-gradient(to right, #212529, #181818);
+            border-bottom: 1px solid #343a40;
+        }
+
+        nav .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #ffffff !important;
+        }
+
+        /* Kontener główny */
+        .container {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        main {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Stopa strony */
+        footer {
+            background-color: #181818;
+            border-top: 1px solid #343a40;
+            text-align: center;
+            padding: 1rem;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+            footer a {
+                color: #66c0f4;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Drobne ulepszenia linków i focus */
+        a, a:visited {
+            color: #66c0f4;
+        }
+
+            a:hover {
+                color: #8fcfff;
+                text-decoration: none;
+            }
+
+            a:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px #66c0f4;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Dane" asp-action="Form">
+                    <span class="me-2">📝</span>Formularz
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse justify-content-end">
+                    <ul class="navbar-nav">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        &copy; @(DateTime.Now.Year) - Formularz
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

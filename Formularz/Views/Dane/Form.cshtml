@@ -1,0 +1,65 @@
+﻿@model Formularz.Models.Dane
+
+@{
+    ViewData["Title"] = "Formularz";
+}
+
+<h1>Formularz rejestracyjny</h1>
+
+@using (Html.BeginForm("Form", "Dane", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <div>
+        @Html.LabelFor(m => m.Imie)
+        @Html.TextBoxFor(m => m.Imie, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Imie, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Nazwisko)
+        @Html.TextBoxFor(m => m.Nazwisko, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nazwisko, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @type = "email", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Haslo)
+        @Html.PasswordFor(m => m.Haslo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Haslo, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.PotwierdzenieHasla)
+        @Html.PasswordFor(m => m.PotwierdzenieHasla, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PotwierdzenieHasla, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.NrTelefonu)
+        @Html.TextBoxFor(m => m.NrTelefonu, new { @type = "tel", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NrTelefonu, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Wiek)
+        @Html.TextBoxFor(m => m.Wiek, new { @type = "number", @class = "form-control", @min = "10", @max = "80" })
+        @Html.ValidationMessageFor(m => m.Wiek, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Miasto)
+        @Html.DropDownListFor(m => m.Miasto, new SelectList(ViewBag.Miasta), "Wybierz miasto", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Miasto, "", new { @class = "text-danger" })
+    </div>
+
+    <br />
+
+    <input type="submit" value="Zarejestruj" class="btn btn-primary" />
+    <input type="reset" value="Wyczyść" class="btn btn-secondary" />
+}
